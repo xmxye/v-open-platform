@@ -1,0 +1,37 @@
+html,
+body,
+#app,
+.app-container {
+  height: 100%;
+}
+
+/* flex */
+.flex_center_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 去掉table中的# */
+/* .el-table tr th:nth-child(1)>.cell{
+  display: none !important;
+} */
+
+/* 表单中下拉箭头 */
+.down-icon{
+  position: absolute;
+  top: 14px;
+  left: calc(100% - 25px);
+}
+.mL5{
+  margin-left:5px;
+}
+.mL10{
+  margin-left:10px;
+}
+.mR5{
+  margin-left:5px;
+}
+.mT10{
+  margin-top:10px
+}
