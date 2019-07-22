@@ -3,9 +3,9 @@
     <div class="input-search">
         <el-input v-model="input" placeholder="可查询字段：组编号，组名称"></el-input>
         <el-button icon="el-icon-search" class="mL10">查询</el-button>
-        <el-button icon="el-icon-plus">添加</el-button>
+        <!-- <el-button icon="el-icon-plus">添加</el-button>
         <el-button icon="el-icon-plus">批量添加</el-button>
-        <el-button icon="el-icon-download">下载批量添加模板</el-button>
+        <el-button icon="el-icon-download">下载批量添加模板</el-button> -->
     </div>
      <br>
       <!-- 表格内容区域 -->
@@ -22,37 +22,44 @@
       <el-table-column
         prop="group1"
         label="组编号"
+        width="130"
         sortable
        >
       </el-table-column>
       <el-table-column
         prop="group2"
         label="组名称"
+        width="130"
        >
       </el-table-column>
       <el-table-column
         prop="group3"
         label="外部系统组类型"
+        width="130"
         >
       </el-table-column>
       <el-table-column
         prop="group4"
         label="是否开启录音"
+        width="130"
        >
       </el-table-column>
       <el-table-column
         prop="group5"
+        width="130"
         label="所属部门">
       </el-table-column>
       <el-table-column
         prop="group6"
+        width="130"
         label="所属域">
       </el-table-column>
       <el-table-column
         prop="group7"
+        width="130"
         label="是否为响应组">
       </el-table-column>
-      <el-table-column label="操作" width="160">
+      <!-- <el-table-column label="操作" width="160">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -61,7 +68,7 @@
             size="mini"
             @click="handleDel(scope.$index, scope.row)">删除</el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
     <!-- 分页 -->
     <div class="block fixedBottom">
@@ -102,12 +109,12 @@
       handleCurrentChange(){
 
       },
-      handleEdit(){
+      // handleEdit(){
 
-      },
-      handleDel(){
+      // },
+      // handleDel(){
 
-      }
+      // }
     }
   }
 </script>

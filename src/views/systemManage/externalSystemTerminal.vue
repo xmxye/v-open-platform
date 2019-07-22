@@ -11,9 +11,6 @@
       <div class="input-search">
         <el-input v-model="input" placeholder="可查询字段：成员编号，名称以及状态"></el-input>
         <el-button icon="el-icon-search" class="mL10">查询</el-button>
-        <el-button icon="el-icon-plus">添加</el-button>
-        <el-button icon="el-icon-plus">批量添加</el-button>
-        <el-button icon="el-icon-download">下载批量添加模板</el-button>
       </div>
        <br>
       <!-- 表格内容区域 -->

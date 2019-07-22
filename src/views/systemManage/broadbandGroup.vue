@@ -1,11 +1,8 @@
 <template>
   <div class="bg-container">
     <div class="input-search">
-        <el-input v-model="input" placeholder="??????????????????????"></el-input>
-        <el-button icon="el-icon-search" class="mL10">??</el-button>
-        <el-button icon="el-icon-plus">??</el-button>
-        <el-button icon="el-icon-plus">????</el-button>
-        <el-button icon="el-icon-download">????????</el-button>
+        <el-input v-model="input" placeholder="可查询字段：组编号，组名称，所属部门，所属域"></el-input>
+        <el-button icon="el-icon-search" class="mL10">查询</el-button>
     </div>
      <br>
       <!-- ?????? -->
@@ -21,41 +18,37 @@
       </el-table-column>
       <el-table-column
         prop="group1"
-        label="???"
+        label="组编号"
         sortable
+        width="130"
        >
       </el-table-column>
       <el-table-column
         prop="group2"
-        label="???"
+        label="组名称"
+        width="130"
        >
       </el-table-column>
       <el-table-column
         prop="group3"
-        label="??????"
+        label="是否开启录音"
+        width="130"
        >
       </el-table-column>
       <el-table-column
         prop="group4"
-        label="????">
+        width="130"
+        label="所属部门">
       </el-table-column>
       <el-table-column
         prop="group5"
-        label="???">
+        width="130"
+        label="所属域">
       </el-table-column>
       <el-table-column
         prop="group6"
-        label="??????">
-      </el-table-column>
-      <el-table-column label="??" width="160">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            @click="handleEdit(scope.$index, scope.row)">??</el-button>
-             <el-button
-            size="mini"
-            @click="handleDel(scope.$index, scope.row)">??</el-button>
-        </template>
+        width="130"
+        label="是否为响应组">
       </el-table-column>
     </el-table>
     <!-- ?? -->
@@ -94,12 +87,6 @@
 
       },
       handleCurrentChange(){
-
-      },
-      handleEdit(){
-
-      },
-      handleDel(){
 
       }
     }

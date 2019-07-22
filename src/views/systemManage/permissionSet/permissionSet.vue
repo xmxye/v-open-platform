@@ -3,6 +3,7 @@
     <div class="input-search">
     <el-input v-model="input" placeholder="可查询字段：权限集名称"></el-input>
     <el-button icon="el-icon-search" class="mL10">查询</el-button>
+    <el-button icon="el-icon-plus" @click.native = "handleToAddpms">添加权限集</el-button>
     </div>
     <el-table
       :data="tableData"
@@ -57,19 +58,20 @@
       </div>
     </el-dialog>
     <Detail :show.sync="show"></Detail>
+    <AddRightsBox :show1.sync="show1"></AddRightsBox>
   </div>
 </template>
-
 <script>
   import Detail from './detail'
+  import AddRightsBox from './toAddRightsBox'
   export default {
     data() {
       return {
         tableData: [{
-          permissionSetName: 'zhangshan',
+          permissionSetName: 'pc端权限',
         },
         {
-          permissionSetName: 'zhangshan',
+          permissionSetName: 'pc端权限',
         }],
         editDialogFormVisible: false,
         form: {
@@ -77,7 +79,8 @@
         },
         formLabelWidth: '120px',
         input:'',
-        show:false
+        show:false,
+        show1:false
       }
     },
     created(){
@@ -113,10 +116,14 @@
       },
       submit(){
         this.editDialogFormVisible = false;
+      },
+      handleToAddpms(){
+        this.show1 = true;
       }
     },
     components:{
-      Detail
+      Detail,
+      AddRightsBox
     }
   }
 </script>
