@@ -67,7 +67,7 @@
         <el-form-item label="所属部门" :label-width="formLabelWidth">
            <v-selectpage :data="list" key-field="id" show-field="name" aria-placeholder="请选择" style="display:inline-block"></v-selectpage>
         </el-form-item>
-         <el-form-item label="资源部门" :label-width="formLabelWidth">
+        <el-form-item label="资源部门" :label-width="formLabelWidth">
            <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false" style="display:inline-block"></v-selectpage>
         </el-form-item>
       </el-form>

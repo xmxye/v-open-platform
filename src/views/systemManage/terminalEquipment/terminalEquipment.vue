@@ -3,7 +3,7 @@
     <div class="input-search">
         <el-input v-model="input" placeholder="可查询字段：关联账号,主通话组,状态"></el-input>
         <el-button icon="el-icon-search" class="mL10">查询</el-button>
-        <el-button icon="el-icon-plus" class="mL10">添加</el-button>
+        <el-button icon="el-icon-plus" class="mL10" @click.native="handleTerminalE">添加</el-button>
     </div>
      <br>
       <!-- 表格内容区域 -->
@@ -112,10 +112,14 @@
         :total="40">
       </el-pagination>
     </div>
+    <AddTerminalE :show2.sync="show2"></AddTerminalE>
+    <EditTerminalE :show3.sync="show3"></EditTerminalE>
   </div>
 </template>
 
 <script>
+import AddTerminalE from './add'
+import EditTerminalE from './edit'
   export default {
     data(){
       return {
@@ -138,7 +142,9 @@
           group14:"66",
           group15:"66",
           group16:"66"
-        }]
+        }],
+        show2:false,
+        show3:false
       }
     },
     methods:{
@@ -149,11 +155,33 @@
 
       },
       handleEdit(index, row){
-
+          this.show3 = true
       },
       handleDel(index, row){
-
+        this.$confirm('此操作将永久删除, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          center: true
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+      },
+      handleTerminalE(){
+          this.show2 = true
       }
+    },
+    components:{
+      AddTerminalE,
+      EditTerminalE
     }
   }
 </script>

@@ -74,7 +74,7 @@ export default new Router({
           name: "terminalEquipment",
           component: r =>
             require.ensure([], () =>
-              r(require("@/views/systemManage/terminalEquipment"), "systemManage")
+              r(require("@/views/systemManage/terminalEquipment/terminalEquipment"), "systemManage")
             ),
           meta: { title: "终端设备", needLogin: true }
         },
