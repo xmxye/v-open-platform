@@ -1,34 +1,38 @@
 <template>
     <div class="add-rights-container">
-        <el-dialog title="添加权限集" :visible.sync="aRBDialogFormVisible" @close="$emit('update:show1', false)">
+        <el-dialog title="添加权限集" :visible.sync="aRBDialogFormVisible" @close="closeDialog">
         <el-form :model="form">
             <el-form-item label="权限集名称" :label-width="formLabelWidth">
             <el-input v-model="form.name" autocomplete="off" style="width:200px"></el-input>
             </el-form-item>
                 <!-- 终端类型，权限集合 添加 删除的位置 -->
-            <div class="add-rights-panel-container mT10">
+            <div class="add-rights-panel-container mT10" v-for="(itemList,index) in form.list" :key="index">
                 <div class="panel">
                     <el-form-item label="终端类型" :label-width="formLabelWidth" style="margin-bottom:0">
-                        <el-select v-model="form.terminalTypeRights" placeholder="请选择">
-                            <el-option label="区域一" value="shanghai"></el-option>
-                            <el-option label="区域二" value="beijing"></el-option>
+                        <el-select v-model="form.list[index].type" placeholder="请选择">
+                            <el-option
+                            v-for="(item,i) in itemList.list1"
+                            :key="item.i"
+                            :label="item.label"
+                            :value="item.value">
+                            </el-option>
                         </el-select>
                     </el-form-item>
                 </div>
                 <!-- 存放权限集合 -->
                 <div class="panel mL10">
                     <label>权限集合</label>
-                    <el-select v-model="value1" multiple placeholder="请选择">
+                    <el-select v-model="form.list[index].type2" multiple placeholder="请选择">
                         <el-option
-                        v-for="item in options1"
+                        v-for="item in itemList.list2"
                         :key="item.value"
                         :label="item.label"
                         :value="item.value">
                         </el-option>
                     </el-select>
                 </div>
-                <el-button class="mL10">添加</el-button>
-                <el-button class="mL10">删除</el-button>
+                <el-button class="mL10" @click.native="addList">添加</el-button>
+                <el-button class="mL10" @click.native="delList(index)">删除</el-button>
             </div>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -45,35 +49,87 @@ export default {
             aRBDialogFormVisible:this.show1,
             form:{
                 name:'',
-                terminalTypeRights:''     
+                // terminalType:'',
+                //终端类型  权限集合
+                value1:[],
+                list:[{
+                    list1: [{
+                        value: '终端类型1',
+                        label: '终端类型1'
+                        }, {
+                        value: '终端类型2',
+                        label: '终端类型2'
+                    }],
+                    list2:[{
+                         value: '权限集合1',
+                        label: '权限集合1'
+                        }, {
+                        value: '权限集合2',
+                        label: '权限集合2'
+                    }],
+                    type:'',
+                    type2:[]
+                 }]
+                // options1: [{
+                //     value: '选项1',
+                //     label: '黄金糕'
+                //     }, {
+                //     value: '选项2',
+                //     label: '双皮奶'
+                // }]
             },
             formLabelWidth:'120px',
-            options1: [{
-                value: '选项1',
-                label: '黄金糕'
-                }, {
-                value: '选项2',
-                label: '双皮奶'
-                }, {
-                value: '选项3',
-                label: '蚵仔煎'
-                }, {
-                value: '选项4',
-                label: '龙须面'
-                }, {
-                value: '选项5',
-                label: '北京烤鸭'
-           }],
-           value1:''
         }
     },
    props:["show1"],
+  
    watch:{
        show1(){
         this.aRBDialogFormVisible = this.show1
-      }
+      },
+      
    },
-   created(){
+   methods:{
+       addList(){
+           const obj = {list1: [{
+                        value: '终端类型1',
+                        label: '终端类型1'
+                        }, {
+                        value: '终端类型2',
+                        label: '终端类型2'
+                    }],
+                    list2:[{
+                        value: '权限集合1',
+                        label: '权限集合1'
+                        }, {
+                        value: '权限集合2',
+                        label: '权限集合2'
+                    }],
+                    type:'',
+                    type2:[]
+                    }
+           this.form.list = [...this.form.list,obj]
+       },
+       delList(i){
+          console.log('index的测试',i);
+            if(this.form.list.length <= 1){
+                alert('至少一条,不能在删除了');
+                return
+            }else{
+                this.form.list.splice(i, 1);
+           }
+       },
+       destroyed () {
+       },
+       closeDialog(){
+           this.$emit('update:show1', false);
+           this.form.list.forEach((item,index)=>{
+              item.type = '';
+              item.type2=[];
+           })
+            this.form.list.length = 1;
+       },
+      
    }
 }
 </script>
