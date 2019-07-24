@@ -89,95 +89,116 @@
     </div>
 
     </div>
+    <EditComponent :show4.sync="show4"></EditComponent>
   </div>
 </template>
 
 <script>
-  export default {
-    data(){
-      return {
-        input:'',
-        data: [{
-          label: '一级 1',
+import EditComponent from './edit'
+export default {
+  data(){
+    return {
+      input:'',
+      data: [{
+        label: '一级 1',
+        children: [{
+          label: '二级 1-1',
           children: [{
-            label: '二级 1-1',
-            children: [{
-              label: '三级 1-1-1'
-            }]
+            label: '三级 1-1-1'
           }]
-         }, {
-          label: '一级 2',
-          children: [{
-            label: '二级 2-1',
-            children: [{
-              label: '三级 2-1-1'
-            }]
-          }, {
-            label: '二级 2-2',
-            children: [{
-              label: '三级 2-2-1'
-            }]
-          }]
-         }, {
-          label: '一级 3',
-          children: [{
-            label: '二级 3-1',
-            children: [{
-              label: '三级 3-1-1'
-            }]
-          }, {
-            label: '二级 3-2',
-            children: [{
-              label: '三级 3-2-1'
-            }]
-          }]
-        }],
-        defaultProps: {
-          children: 'children',
-          label: 'label'
-        },
-        currentPage:2,
-        tableData:[{
-          accountName:'447',
-          accountNo:'gbf',
-          externalSystemUserNo:'gfd',
-          nationalStandardCode:'sdf',
-          lastTimeOnline:'sd',
-          externalSystemType:'df',
-          isSoundRecode:'df',
-          remarks:'fds',
-          membershipStatus:'s6665',
-        },{
-          accountName:'447',
-          accountNo:'gbf',
-          externalSystemUserNo:'gfd',
-          nationalStandardCode:'sdf',
-          lastTimeOnline:'sd',
-          externalSystemType:'df',
-          isSoundRecode:'df',
-          remarks:'fds',
-          membershipStatus:'s6665',
         }]
-      }
-    },
-    methods:{
-      handleNodeClick(data) {
-        console.log(data);
+        }, {
+        label: '一级 2',
+        children: [{
+          label: '二级 2-1',
+          children: [{
+            label: '三级 2-1-1'
+          }]
+        }, {
+          label: '二级 2-2',
+          children: [{
+            label: '三级 2-2-1'
+          }]
+        }]
+        }, {
+        label: '一级 3',
+        children: [{
+          label: '二级 3-1',
+          children: [{
+            label: '三级 3-1-1'
+          }]
+        }, {
+          label: '二级 3-2',
+          children: [{
+            label: '三级 3-2-1'
+          }]
+        }]
+      }],
+      defaultProps: {
+        children: 'children',
+        label: 'label'
       },
-      handleSizeChange(){
-
-      },
-      handleCurrentChange(){
-
-      },
-      handleEdit(){
-
-      },
-      handleDel(){
-
-      }
+      currentPage:2,
+      tableData:[{
+        accountName:'447',
+        accountNo:'gbf',
+        externalSystemUserNo:'gfd',
+        nationalStandardCode:'sdf',
+        lastTimeOnline:'sd',
+        externalSystemType:'df',
+        isSoundRecode:'df',
+        remarks:'fds',
+        membershipStatus:'s6665',
+      },{
+        accountName:'447',
+        accountNo:'gbf',
+        externalSystemUserNo:'gfd',
+        nationalStandardCode:'sdf',
+        lastTimeOnline:'sd',
+        externalSystemType:'df',
+        isSoundRecode:'df',
+        remarks:'fds',
+        membershipStatus:'s6665',
+      }],
+      show4:false
     }
+  },
+  methods:{
+    handleNodeClick(data) {
+      console.log(data);
+    },
+    handleSizeChange(){
+
+    },
+    handleCurrentChange(){
+
+    },
+    handleEdit(index,row){
+        this.show4 = true
+    },
+    handleDel(index,row){
+      this.$confirm('此操作将永久删除, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          center: true
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+    }
+  },
+  components:{
+    EditComponent
   }
+}
 </script>
 <style lang="scss" scoped>
   .est-container{

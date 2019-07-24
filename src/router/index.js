@@ -119,7 +119,7 @@ export default new Router({
           name: "externalSystemTerminal",
           component: r =>
             require.ensure([], () =>
-              r(require("@/views/systemManage/externalSystemTerminal"), "systemManage")
+              r(require("@/views/systemManage/externalSystemTerminal/externalSystemTerminal"), "systemManage")
             ),
           meta: { title: "外部系统终端", needLogin: true }
         }
