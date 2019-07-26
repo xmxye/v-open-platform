@@ -35,7 +35,8 @@
                 <el-form-item label="业务优先级" :label-width="formLabelWidth" >
                     <el-select v-model="form.priority" placeholder="请选择">
                         <el-option 
-                        v-for="item in optionsPriority" 
+                        v-for="(item,i) in optionsPriority" 
+                        :key="i"
                         :label="item.label" 
                         :value="item.value">
                         </el-option>
@@ -147,8 +148,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .add-terminalEquipment-container{
-        
-    }
+.add-terminalEquipment-container{
+    
+}
 </style>
 

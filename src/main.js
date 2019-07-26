@@ -17,6 +17,9 @@ import "@/permission";
 //global css
 import "@/style/index.css";
 
+import myMixin from './mixin.js';
+
+
 //v-pageSelect
 import vSelectPage from 'v-selectpage';
 Vue.use(vSelectPage);
@@ -24,6 +27,8 @@ Vue.use(vSelectPage);
 Vue.config.productionTip = false;
 Vue.prototype.Storage = storage;
 Vue.use(ElementUI);
+
+Vue.use(myMixin);
 /* eslint-disable no-new */
 new Vue({
   el: "#app",

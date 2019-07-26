@@ -53,7 +53,7 @@ export default {
             this.$store.dispatch("setToken", res.token);
             this.$route.query.redirect
               ? this.$router.push(this.$route.query.redirect)
-              : this.$router.push({ name: "Home" });
+              : this.$router.push({ name: "platformInfoManage" });
           }
         }
       });

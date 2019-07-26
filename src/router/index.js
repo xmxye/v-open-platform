@@ -10,6 +10,7 @@ export default new Router({
     //登录
     {
       path: "/login",
+      name:'login',
       component: r =>
         // r=>require.ensure([],()=>r(require('...'),xxx))
         //切割路由懒加载，能够有效提升首页加载速度
