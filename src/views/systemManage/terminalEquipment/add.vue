@@ -147,9 +147,11 @@ export default {
    }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .add-terminalEquipment-container{
-    
+    .el-dialog{
+        width:30% !important;
+    }
 }
 </style>
 

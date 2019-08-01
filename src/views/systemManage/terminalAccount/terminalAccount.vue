@@ -41,14 +41,21 @@
         prop="topDepartment"
         label="权限集">
       </el-table-column>
-      <el-table-column label="操作">
-      <template slot-scope="scope">
+      <el-table-column label="修改">
+        <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-             <el-button
+            class="el-icon-edit"
+            @click="handleEdit(scope.$index, scope.row)"></el-button>
+        </template>
+      </el-table-column>
+      <!-- 删除 -->
+      <el-table-column label="删除">
+        <template slot-scope="scope">
+          <el-button
             size="mini"
-            @click="handleDelOpen(scope.$index, scope.row)">删除</el-button>
+            class="el-icon-delete" 
+            @click="handleDelOpen(scope.$index, scope.row)"></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -56,7 +63,7 @@
     <el-dialog title="编辑终端账号" :visible.sync="editAccountDialogFormVisible">
       <el-form :model="form">
         <el-form-item label="所属部门" :label-width="formLabelWidth">
-           <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false" style="display:inline-block"></v-selectpage>
+           <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false"></v-selectpage>
         </el-form-item>
         <el-form-item label="账号名称" :label-width="formLabelWidth" prop="password">
           <el-input v-model="form.password" autocomplete="off"></el-input>
@@ -65,10 +72,10 @@
           <el-input v-model="form.phone" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="所属部门" :label-width="formLabelWidth">
-           <v-selectpage :data="list" key-field="id" show-field="name" aria-placeholder="请选择" style="display:inline-block"></v-selectpage>
+           <v-selectpage :data="list" key-field="id" show-field="name" aria-placeholder="请选择"></v-selectpage>
         </el-form-item>
         <el-form-item label="资源部门" :label-width="formLabelWidth">
-           <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false" style="display:inline-block"></v-selectpage>
+           <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false"></v-selectpage>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -90,8 +97,8 @@
             </el-option>
           </el-select>
         </el-form-item>
-         <el-form-item label="所属部门" :label-width="formLabelWidth">
-           <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false" style="display:inline-block"></v-selectpage>
+        <el-form-item label="所属部门" :label-width="formLabelWidth">
+           <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false"></v-selectpage>
         </el-form-item>
         <el-form-item label="账号编码" :label-width="formLabelWidth">
           <el-input v-model="form.phone" autocomplete="off"></el-input>
@@ -103,10 +110,10 @@
           <el-input v-model="form.phone" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="权限集" :label-width="formLabelWidth">
-           <v-selectpage :data="list" key-field="id" show-field="name" aria-placeholder="请选择" style="display:inline-block"></v-selectpage>
+           <v-selectpage :data="list" key-field="id" show-field="name" aria-placeholder="请选择"></v-selectpage>
         </el-form-item>
         <el-form-item label="资源部门" :label-width="formLabelWidth">
-           <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false" style="display:inline-block"></v-selectpage>
+           <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false"></v-selectpage>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -279,6 +286,13 @@
     }
   }
 </script>
+<style lang="scss">
+.terminal-acount-container{
+  .el-dialog{
+      width:30% !important;
+    }
+}
+</style>
 
 <style lang="scss" scoped>
   .terminal-acount-container{

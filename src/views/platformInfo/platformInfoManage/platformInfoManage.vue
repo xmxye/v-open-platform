@@ -1,5 +1,5 @@
 <template>
-  <div class="table-container">
+  <div class="platformInfo-m-container">
     <el-table
       :data="tableData"
       border
@@ -104,10 +104,10 @@
     }
   }
 </script>
-<style lang="scss" scoped>
-  .table-container{
+<style lang="scss">
+  .platformInfo-m-container{
     .el-dialog{
-        width:30% !important;
+        width:25% !important;
     }
   }
 </style>

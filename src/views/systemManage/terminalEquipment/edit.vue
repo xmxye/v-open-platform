@@ -1,7 +1,7 @@
 <template>
     <div class="edit-terminalEquipment-container">
         <el-dialog title="修改终端成员" :visible.sync="etcDialogFormVisible" @close="$emit('update:show3', false)">
-            <!-- <el-form :model="form">
+            <el-form :model="form">
                 <el-form-item label="终端账号" :label-width="formLabelWidth">
                     <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="false" style="display:inline-block"></v-selectpage>
                 </el-form-item>
@@ -35,7 +35,8 @@
                 <el-form-item label="业务优先级" :label-width="formLabelWidth" >
                     <el-select v-model="form.priority" placeholder="请选择">
                         <el-option 
-                        v-for="item in optionsPriority" 
+                        v-for="(item,index) in optionsPriority" 
+                        :key="index"
                         :label="item.label" 
                         :value="item.value">
                         </el-option>
@@ -59,7 +60,7 @@
             <div slot="footer" class="dialog-footer">
                 <el-button @click="$emit('update:show3', false)">取 消</el-button>
                 <el-button type="primary">确 定</el-button>
-            </div> -->
+            </div>
         </el-dialog>
     </div>
 </template>
@@ -68,72 +69,72 @@ export default {
     data(){
         return {
             etcDialogFormVisible:this.show3,
-        //     form:{
-        //         name:'',
-        //         equipType:'',
-        //         GPS:'',
-        //         scan:'',
-        //         region:'',
-        //         soundRecording:'',
-        //         priority:'',
-        //         callMode:''   
-        //     },
-        //     formLabelWidth:'180px',
-        //     options1: [{
-        //         value: '选项1',
-        //         label: '黄金糕'
-        //         }, {
-        //         value: '选项2',
-        //         label: '双皮奶'
-        //         }, {
-        //         value: '选项3',
-        //         label: '蚵仔煎'
-        //         }, {
-        //         value: '选项4',
-        //         label: '龙须面'
-        //         }, {
-        //         value: '选项5',
-        //         label: '北京烤鸭'
-        //    }],
-        //    value1:'',
-        //    sample1: [
-        //         {id:1 ,name:'The People\'s Republic of China',desc:'中华人民共和国'},
-        //         {id:2 ,name:'United States of America',desc:'美利坚合众国'},
-        //         ],
-        //         showFields:[
-        //             {title: 'id',data: 'id'},
-        //             {title: 'name',data: 'name'},
-        //             // {title: 'desc',data: 'desc'},
-        //     ],
-        //     textarea2:'',
-        //     optionsPriority: [{
-        //         value: '1',
-        //         label: '1'
-        //         }, {
-        //         value: '2',
-        //         label: '2'
-        //         }, {
-        //         value: '3',
-        //         label: '3'
-        //         },{
-        //         value: '4',
-        //         label: '4'
-        //         }, {
-        //         value: '5',
-        //         label: '5'
-        //         }, {
-        //         value: '6',
-        //         label: '6'
-        //         },{
-        //         value: '7',
-        //         label: '7'
-        //         }, {
-        //         value: '8',
-        //         label: '8'
-        //         },{
-        //         value: '9',
-        //         label: '9'
-        //     }],
+            form:{
+                name:'',
+                equipType:'',
+                GPS:'',
+                scan:'',
+                region:'',
+                soundRecording:'',
+                priority:'',
+                callMode:''   
+            },
+            formLabelWidth:'180px',
+            options1: [{
+                value: '选项1',
+                label: '黄金糕'
+                }, {
+                value: '选项2',
+                label: '双皮奶'
+                }, {
+                value: '选项3',
+                label: '蚵仔煎'
+                }, {
+                value: '选项4',
+                label: '龙须面'
+                }, {
+                value: '选项5',
+                label: '北京烤鸭'
+           }],
+           value1:'',
+           sample1: [
+                {id:1 ,name:'The People\'s Republic of China',desc:'中华人民共和国'},
+                {id:2 ,name:'United States of America',desc:'美利坚合众国'},
+                ],
+                showFields:[
+                    {title: 'id',data: 'id'},
+                    {title: 'name',data: 'name'},
+                    // {title: 'desc',data: 'desc'},
+            ],
+            textarea2:'',
+            optionsPriority: [{
+                value: '1',
+                label: '1'
+                }, {
+                value: '2',
+                label: '2'
+                }, {
+                value: '3',
+                label: '3'
+                },{
+                value: '4',
+                label: '4'
+                }, {
+                value: '5',
+                label: '5'
+                }, {
+                value: '6',
+                label: '6'
+                },{
+                value: '7',
+                label: '7'
+                }, {
+                value: '8',
+                label: '8'
+                },{
+                value: '9',
+                label: '9'
+            }],
         }
     },
    props:["show3"],
@@ -145,6 +146,13 @@ export default {
   
 }
 </script>
+<style lang="scss">
+    .edit-terminalEquipment-container{
+        .el-dialog{
+            width:30% !important;
+        }
+    }
+</style>
 <style lang="scss" scoped>
     .edit-terminalEquipment-container{
         

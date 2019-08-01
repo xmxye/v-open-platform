@@ -47,7 +47,7 @@ export default new Router({
           name: "platformInfoManage",
           component: r =>
             require.ensure([], () =>
-              r(require("@/views/platformInfo/platformInfoManage"), "platformInfo")
+              r(require("@/views/platformInfo/platformInfoManage/platformInfoManage"), "platformInfo")
             ),
           meta: { title: "平台信息管理", needLogin: true }
         }

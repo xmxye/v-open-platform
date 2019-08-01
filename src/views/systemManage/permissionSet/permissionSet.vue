@@ -130,7 +130,7 @@
 <style lang="scss" scoped>
   .pms-container{
     .el-dialog{
-        width:30% !important;
+        // width:30% !important;
     }
     .input-search{
        display: flex;

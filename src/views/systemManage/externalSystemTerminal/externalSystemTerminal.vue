@@ -64,14 +64,22 @@
         prop="membershipStatus"
         label="成员状态">
       </el-table-column>
-      <el-table-column label="操作" width="160">
-        <template slot-scope="scope">
+
+      <el-table-column label="修改">
+         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="handleEdit(scope.$index, scope.row)">修改</el-button>
-             <el-button
+            class="el-icon-edit"
+            @click="handleEdit(scope.$index, scope.row)"></el-button>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="删除">
+         <template slot-scope="scope">
+          <el-button
             size="mini"
-            @click="handleDel(scope.$index, scope.row)">删除</el-button>
+            class="el-icon-delete"
+            @click="handleDel(scope.$index, scope.row)"></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -165,7 +173,7 @@ export default {
   },
   methods:{
     handleNodeClick(data) {
-      console.log(data);
+      console.log({...data});
     },
     handleSizeChange(){
 

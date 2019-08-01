@@ -27,6 +27,7 @@
           </el-table-column>
         </el-table>
         <el-dialog
+        class="add-terminal-type"
         width="30%"
         title="修改终端类型"
         :visible.sync="innerVisible"
@@ -48,6 +49,7 @@
 
         <!-- ................................................ -->
         <el-dialog
+          class="add-terminal-type"
           width="30%"
           title="添加终端类型"
           :visible.sync="innerVisible1"
@@ -165,9 +167,14 @@
     }
   }
 </script>
-
 <style lang="scss" scoped>
   .pms-detail-container{
-
+    .add-terminal-type{
+      .el-dialog{
+        .el-dialog__body{
+          text-align: center !important;
+        }
+      }
+    }
   }
 </style>

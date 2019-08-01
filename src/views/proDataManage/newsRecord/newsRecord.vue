@@ -24,15 +24,15 @@
 
     <!-- 选择部门 -->
     <span class="mL5">选择部门</span>
-    <v-selectpage :data="list" key-field="id" show-field="name" aria-placeholder="请选择"></v-selectpage>
+    <v-selectpage @values="VSelectDepart" :data="list" key-field="id" show-field="name"></v-selectpage>
 
     <!-- 终端类型 -->
     <span class="mL5">终端类型</span>
-    <v-selectpage :data="sample1" :tb-columns="showFields" :rtl="true"></v-selectpage>
-    <el-button class="mL5">查询</el-button>
+    <v-selectpage @values="VSelectTerminalType" :data="sample1" :tb-columns="showFields"></v-selectpage>
+    <el-button class="mL5" @click.native="handleQuery">查询</el-button>
     <br>
     <!-- 表格内容区域 -->
-       <el-table
+      <el-table
       :data="tableData"
       border
       style="width: 100%;margin-top:10px"
@@ -86,14 +86,22 @@
         prop="messageType"
         label="消息类型">
       </el-table-column>
-      <el-table-column label="操作" width="160">
-        <template slot-scope="scope">
+      <!-- 播放 和 下载 -->
+      <el-table-column label="播放">
+         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="handlePlay(scope.$index, scope.row)">播放</el-button>
-             <el-button
+            class="el-icon-caret-right"
+            @click="handlePlay(scope.$index, scope.row)"></el-button>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="下载">
+         <template slot-scope="scope">
+          <el-button
             size="mini"
-            @click="handleDownload(scope.$index, scope.row)">下载</el-button>
+            class="el-icon-download"
+            @click="handleDownload(scope.$index, scope.row)"></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -172,9 +180,10 @@ export default {
         messageCategory:'144',
         messageType:'131',
       }],
-      currentPage: 3
+      currentPage: 3,
     }
   },
+
   methods:{
     handlePlay(index,row){
       console.log(index,row)
@@ -187,6 +196,15 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+    },
+    VSelectDepart(data){
+      console.log("部门",data);
+    },
+    VSelectTerminalType(data){
+      console.log('终端类型',data)
+    },
+    handleQuery(){
+
     }
   }
 }
